@@ -1,0 +1,42 @@
+.login-area{
+	position: relative;
+	top: 10%;
+	left: 20%;
+
+}
+.login-area form{		
+	display: flex;
+	align-items: center;
+	flex-flow: column wrap;
+	justify-content: space-around;
+
+}
+.login-area form label{
+	flex:auto;
+	font-size: 2.8em;
+	color:white;
+	margin-bottom: 0.5rem;
+}
+.login-area form input{
+font-size: 2.8em;
+margin-bottom: 0.5rem;
+color:white;
+background-color: rgb(43, 186, 81);
+border: 0.2rem solid white;
+border-radius: 3rem;
+text-align: center;
+	flex:auto;
+
+}
+@media (max-width: 1050px){
+	.login-area{
+		left:0%;
+	}
+	.login-area form input{
+		font-size: 1.2em;
+	}
+	.login-area form label{
+		font-size: 1.2em;
+	}
+
+}

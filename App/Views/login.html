@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>GaMon</title>
+	<meta charset="UTF-8">
+	<meta name="description"
+		content="This is the Login page of the GaMon Website. Here everyone can get to their personal page.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../Resources/CSS/style.css">
+	<link rel="stylesheet" href="../../Resources/CSS/style-login.css">
+	<link rel="icon" href="../../Resources/Images/icon.ico">
+	<script src="../../Resources/JS/Auth.js">	</script>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="collumn-flex">
+			<div class="row-flex">
+				<div class="container-header-content">
+					<a href="./index.html">Home</a>
+				</div>
+				<div class="container-header-content">
+					<a href="./recycle.html"> Recycle Events</a>
+				</div>
+			</div>
+
+			<div class="row-flex">
+				<div class="container-header-content">
+					<a href="./register.html">Register</a>
+				</div>
+				<div class="container-header-content">
+					<a href="#">Login</a>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<div class="slider-text-wrapper">
+
+		<div class="container-text-area">
+			<div class="text-area">
+				<div class="login-area">
+					<form id="myForm" onsubmit="submitForm(event)">
+						<label for="Username"> Username</label>
+						<input type="text" name="Username" id="Username" required>
+						<label for="Password"> Password</label>
+						<input type="password" name="Password" id="Password" required>
+						<input type="submit" name="Login" value="Login">
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+		<div class="image-slider">
+			<figure>
+				<img src="../../Resources/Images/tomberon.jpg" alt="poza">
+
+				<img src="../../Resources/Images/trashcans.jpg" alt="poza">
+
+				<img src="../../Resources/Images/teamseas.jpg" alt="poza">
+			</figure>
+		</div>
+
+	</div>
+
+
+
+</body>
+
+</html>

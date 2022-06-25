@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+	<title>GaMon</title>
+	<meta charset="UTF-8">
+	<meta name="description"
+		content="This is your personal page where you can interact with different forms to do fun stuff.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../Resources/CSS/style.css">
+	<link rel="stylesheet" href="../../Resources/CSS/style_dropdown.css">
+	<link rel="stylesheet" href="../../Resources/CSS/style_form.css">
+	<link rel="icon" href="../../Resources/Images/icon.ico">
+	<script src="../../Resources/JS/Events_SupUs.js"></script>
+	<script src="../../Resources/JS/Reports_SupUs.js"></script>
+	<script src="../../Resources/JS/Report.js"></script>
+	<script src="../../Resources/JS/FileDownloader.js"></script>
+
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="container-header">
+
+			<div class="container-header-content">
+				<a href="./index_superuser.html">Home</a>
+			</div>
+			<div class="container-header-content">
+				<a href="./recycle_superuser.html"> Recycle Events</a>
+			</div>
+			<div class="container-header-content">
+				<a href="./login.html">Logout</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="dropdown">
+		<button class="dropbtn">Options</button>
+		<div class="dropdown-content">
+			<a href="#request-jump">Garbage Collection Requests</a>
+			<a href="#event-jump">Add an Event</a>
+			<a href="#report-jump">Report List</a>
+		</div>
+	</div>
+
+	<div class="container-text-area">
+		<div class="text-area">
+			<form class="form" onsubmit="requestHtml(event)">
+				<label>Time interval</label>
+				<select id="selected-interval">
+					<option value="1" id="last-day" selected>Last day</option>
+					<option value="7" id="last-week">Last week</option>
+					<option value="30" id="last-month">Last month</option>
+				</select>
+				<input type="submit" name="submit" value="Download HTML">
+			</form>
+			<form class="form" onsubmit="requestCSV(event)">
+				<input type="submit" name="submit" value="Download CSV">
+			</form>
+			<form class="form" onsubmit="requestPDF(event)">
+				<input type="submit" name="submit" value="Download PDF">
+			</form>
+			<form class="form" onsubmit="requestSVG(event)">
+				<select id="selected-type">
+					<option value="0" selected>Type of Garbage</option>
+					<option value="1">Cartiere</option>
+					<option value="2">Zone</option>
+				</select>
+				<input type="submit" name="submit" value="Download HTML/SVG">
+			</form>
+
+		</div>
+
+		<div id="request-jump"></div>
+		<div class="text-area">
+			<h1>Full Garbage Bins</h1>
+			<form onsubmit="getPubeleFull(event)">
+				<input type="submit" name="Refresh" value="Refresh">
+			</form>
+			<div id="table-pub"></div>
+
+			<h1>Garbage been empty </h1>
+			<form onsubmit="GarbageIsEmpty(event)">
+				<label for="id-pub">Empty bin with ID:</label>
+				<input id="id-pub" name="id-pub" type="number" min="0" max="1000000" required>
+				<input type="submit" name="submit" value="empty">
+
+			</form>
+		</div>
+
+
+		<div id="event-jump"></div>
+		<div class="text-area">
+			<h1>Events</h1>
+			<form onsubmit="RequestsEvents(event)">
+				<input type="submit" name="Refresh" value="Refresh">
+			</form>
+			<div id="table-events"></div>
+
+			<h1>Event delete</h1>
+			<form onsubmit="DeleteEvents(event)">
+				<label for="id-event">Delete Event with ID:</label>
+				<input id="id-event" name="id-event" type="number" min="0" max="1000000" required>
+				<input type="submit" name="submit" value="delete">
+
+			</form>
+
+		</div>
+		<div class="text-area">
+			<h1>Event Update</h1>
+
+			<form method="POST" class="form" action="/api/updateEvents/" enctype="multipart/form-data" target="dummyF">
+				<label for="event-id-update">Event ID</label>
+				<input type="text" id="event-id-update" name="event-id-update" required>
+				<label for="event-name-update">Event new Name</label>
+				<input type="text" id="event-name-update" name="event-name" required>
+				<label for="description-update">Event new description</label>
+				<textarea name="description" id="description-update" rows="10" cols="40"
+					placeholder="Here you should describe the event" required></textarea>
+				<label for="event-image-update">New image about the event</label>
+				<input type="file" id="event-image-update" name="event-image" accept="image/png, image/jpg">
+				<button type="submit">Submit Event</button>
+			</form>
+		</div>
+
+		<div class="text-area">
+			<h1>Event Creator</h1>
+
+			<form method="POST" class="form" action="/api/Events" enctype="multipart/form-data" target="dummyF">
+				<label for="event-name">Event Name</label>
+				<input type="text" id="event-name" name="event-name" required>
+				<label for="description">Event description</label>
+				<textarea name="description" id="description" rows="10" cols="40"
+					placeholder="Here you should describe the event" required></textarea>
+				<label for="event-image">Image about the event</label>
+				<input type="file" id="event-image" name="event-image" accept="image/png, image/jpg">
+				<button type="submit">Submit Event</button>
+			</form>
+		</div>
+
+		<div id="report-jump"></div>
+		<div class="text-area">
+			<h1>Reports from Users</h1>
+			<form onsubmit="RequestsReports(event)">
+				<input type="submit" name="Refresh" value="Refresh">
+			</form>
+			<div id="table-reports"></div>
+			<h1>Report delete</h1>
+			<form onsubmit="DeleteReports(event)">
+				<label for="id-report">Delete Event with ID:</label>
+				<input id="id-report" name="id-report" type="number" min="0" max="1000000">
+				<input type="submit" name="submit" value="delete">
+
+			</form>
+		</div>
+	</div>
+
+
+	<div class="image-slider">
+		<figure>
+			<img src="../../Resources/Images/tomberon.jpg" alt="poza">
+
+			<img src="../../Resources/Images/trashcans.jpg" alt="poza">
+
+			<img src="../../Resources/Images/teamseas.jpg" alt="poza">
+		</figure>
+	</div>
+
+
+
+	<iframe name="dummyF" id="dummyF" style="display: none;"></iframe>
+</body>
+
+</html>

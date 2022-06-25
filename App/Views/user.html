@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>GaMon</title>
+	<meta charset="UTF-8">
+	<meta name="description"
+		content="This is your personal page where you can interact with different forms to do fun stuff.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../Resources/CSS/style.css">
+	<link rel="stylesheet" href="../../Resources/CSS/style_dropdown.css">
+	<link rel="stylesheet" href="../../Resources/CSS/style_form.css">
+	<link rel="icon" href="../../Resources/Images/icon.ico">
+	<script src="../../Resources/JS/zone.js"></script>
+	<script src="../../Resources/JS/Cereri.js"></script>
+	<script src="../../Resources/JS/Report.js"></script>
+
+	<script src="../../Resources/JS/addGarbage.js"></script>
+</head>
+
+<body>
+	<header class="main-header">
+		<div class="container-header">
+
+			<div class="container-header-content">
+				<a href="./index_user.html">Home</a>
+			</div>
+			<div class="container-header-content">
+				<a href="./recycle_user.html"> Recycle Events</a>
+			</div>
+			<div class="container-header-content">
+				<a href="./login.html">Logout</a>
+			</div>
+		</div>
+
+	</header>
+	<div class="dropdown">
+		<button class="dropbtn">Options</button>
+		<div class="dropdown-content">
+			<a href="#Req">Collect My Garbage</a>
+			<a href="#Garbage_History">Garbage History</a>
+			<a href="#Report">Make Report</a>
+		</div>
+
+	</div>
+
+
+	<div class="image-slider">
+		<figure>
+			<img src="../../Resources/Images/tomberon.jpg" alt="poza">
+
+			<img src="../../Resources/Images/trashcans.jpg" alt="poza">
+
+			<img src="../../Resources/Images/teamseas.jpg" alt="poza">
+		</figure>
+	</div>
+
+
+	<div class="container-text-area">
+
+		<div id="Req"></div>
+		<div class="text-area">
+			<h1>Add garbage</h1>
+			<div id="form-garbage-request-div">
+				<form class="form" id="form-zone">
+					<label for="zone">Zona:</label>
+					<select id="zone" onchange="selectZona()"></select>
+				</form>
+			</div>
+		</div>
+		<div id="Garbage_History"></div>
+		<div class="text-area">
+			<h1>Garbage History</h1>
+			<form onsubmit="RequestsHistory(event)">
+				<input type="submit" name="Refresh" value="Refresh">
+			</form>
+			<div id="table-requests"></div>
+
+		</div>
+
+		<div class="text-area">
+
+		</div>
+
+		<div id="Report"></div>
+		<div class="text-area">
+			<h1>Report littering</h1>
+
+			<div>
+				<iframe name="dummyF" id="dummyF" style="display: none;"></iframe>
+				<form class="form" method="POST" action="api/makeReport" enctype="multipart/form-data" target="dummyF">
+					<label for="description">Description</label>
+					<input type="text" name="description" id="description" required>
+					<label for="image-upload">Image</label>
+					<input type="file" name="image-upload" id="image-upload" accept=".png,.jpg,.jpeg">
+					<input type="submit" value="submit">
+				</form>
+
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Technical Report</title>
+  <link rel="stylesheet" href="./styleTR.css">
+</head>
+
+<body>
+  <header>
+    <h1>GaMon Technical Report</h1>
+  </header>
+
+  <section typeof="sa:AuthorsList">
+    <h2>Authors</h2>
+    <ul>
+     
+      <li typeof="sa:ContributorRole" property="schema:author">
+        <span typeof="schema:Person">
+          <meta property="schema:givenName" content="Tudor">
+          <meta property="schema:additionalName" content="Andrei">
+          <meta property="schema:familyName" content="Frateanu">
+          <span property="schema:name"> Frateanu Tudor-Andrei </span>
+        </span>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <section>
+    <h1>Table of Contents</h1>
+    <ul>
+      <li>
+        <a href="#introduction"> 1. Introduction</a>
+        <ul>
+          <li> <a href="#purpose"> 1.1 Purpose </a> </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#overall_description"> 2. Overall Description </a>
+        <ul>
+          <li> <a href="#product_perspective"> 2.1 Product Perspective </a> </li>
+          <li> <a href="#product_functions"> 2.2 Product Functions </a> </li>
+          <li> <a href="#user_classes_and_characteristics"> 2.3 User Classes and Characteristics </a> </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#system_features"> 3. System Features </a>
+        <ul>
+          <li> <a href="#administration_of_database"> 3.1 Administration of database via the administration page </a>
+          </li>
+          <li> <a href="#searching"> 3.2 Getting results from the database </a> </li>
+          <li> <a href="#creating_and_downloading"> 3.3 Creating and downloading numeric reports and charts as HTML, CSV
+              and PDF files </a> </li>
+          <li> <a href="#security">3.4 Security</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#development"> 4. Development </a>
+        <ul>
+          <li> <a href="#views"> 4.1 Views </a> </li>
+          <li> <a href="#mvc"> 4.2 MVC </a> </li>
+          <li> <a href="#NodeJS">4.3 NodeJS Libraries</a></li>
+          <li> <a href="#crypto">4.4 NodeJS crypto</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="#information_share"> 5. Information Share </a>
+        <ul>
+          <li> <a href="#github"> 5.1 GitHub </a> </li>
+          <li> <a href="#discord"> 5.2 Discord </a> </li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="#architecture_representation"> 6. Architecture Representation </a>
+        <ul>
+          <li> <a href="#uml_diagram"> 6.1 UML Diagram </a> </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#data_sources"> 7. Data Sources </a>
+        <ul>
+          <li> <a href="#GCD"> 7.1 Garbage Collection&Dispatch Database </a> </li>
+        </ul>
+      </li>
+
+    </ul>
+  </section>
+
+  <section>
+    <section>
+      <h1 id="introduction"> 1. Introduction </h1>
+      <section>
+        <h2 id="purpose"> 1.1 Purpose </h2>
+        <p> GaMon is a tool to manage garbage collection in cities, manage reports from users about littering and
+          initializing events for increasing awarness about the benefits of recycling.
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h1 id="overall_description"> 2. Overall Description </h1>
+      <section>
+        <h2 id="product_perspective"> 2.1 Product Perspective </h2>
+        <p> GaMon is a new, self-contained product, that is not based on any previous projects, which was made with the
+          purpose of simplifying how garbage collection in cities is done </p>
+      </section>
+      <section>
+        <h2 id="product_functions"> 2.2 Product Functions</h2>
+        <p> GaMon allows users to send data about the type of garbage thrown to a database from which specialized users
+          can see the data in a centralized manner. Also the application allows the specialized users to send events
+          about recycling. The administrator has access to the database trough a special page. He can also generate
+          reports about garbage collection.
+        </p>
+      </section>
+      <section>
+        <h2 id="user_classes_and_characteristics"> 2.3 User Classes and Characteristics </h2>
+        <p>
+          The application has 3 types of users: user, superuser, administrator.
+          The user can has acces to 4 pages if he is not signed in his account: the main page, a page where he can see
+          events about recycling, the register page and loggin in page.
+        </p>
+        <p>
+          If he logges in as a normal user he can use the following forms to add a garbage request (by selecting the
+          specific place and the quantity), report a bin as beeing full, get his old garbage request and report a
+          littering incident.
+        </p>
+        <figure typeof="sa:image">
+          <img src="../Resources/Images/report-forms/garbage-user.png" alt="forms-users">
+          <figcaption> Form from user page </figcaption>
+        </figure>
+        <p>
+          If he logges in as a SuperUser he can use the following forms to update, create, delete and see events, empty
+          garbage bins that user have deemed as full, and see and delete reports from users.
+        </p>
+        <figure typeof="sa:image">
+          <img src="../Resources/Images/report-forms/garbage-superuser.png" alt="forms-superusers">
+          <figcaption> Form from SuperUser page </figcaption>
+        </figure>
+
+      </section>
+    </section>
+    <section>
+      <h1 id="system_features"> 3. System Features </h1>
+
+      <section>
+        <h2 id="administration_of_database"> 3.1 Administration of database via the administration page </h2>
+        <section>
+          <h3> 3.1.1 Description </h3>
+          <p> The administrator is responsible for making active changes to the database.
+          </p>
+        </section>
+
+        <section>
+          <h3> 3.1.2 Functional Requirements </h3>
+          <p>
+            The user has to input valid credentials in order to access the administrator page. The database must be up
+            and running in order for the queries to take effect.
+          </p>
+        </section>
+      </section>
+
+
+      <section>
+        <h2 id="searching"> 3.2 Getting results from the database </h2>
+        <section>
+          <h3> 3.2.1 Description </h3>
+          <p>
+            The administrator uses the administrator page interface to do CRUD operation to the database.
+          </p>
+        </section>
+        <section>
+          <h3> 3.2.2 Functional Requirements </h3>
+          <p>The database must be up and running in order for the queries to take effect and the user must be logged in
+            as an administrator </p>
+          <p>The admin has acces to the following tables: SuperUseri,Pubele,Cartiere,Zone.
+          On this tables he can use the button getData to see the information in the Tables or he can use the addData button to add the information submited in the form above the table in the data base</p>
+          <figure typeof="sa:image">
+            <img src="../Resources/Images/admin_page_buttons.PNG">
+            <figcaption> Buttons that help the admin make operations on the database</figcaption>
+          </figure>
+          <p>On each row there is a 'Delete' button that the admin can press to delete that row from the data base
+            IMPORTANT: If a row from Pubele/Cartiere/Zone is deleted the admin must delete the rows with coresponding IDs from the other tables!
+          </p>
+          <figure typeof="sa:image">
+            <img src="../Resources/Images/tables.PNG">
+            <figcaption> Expanded tables with 'Delete' buttons</figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <section>
+        <h2 id="creating_and_downloading"> 3.3 Creating and downloading numeric reports and charts as HTML, CSV and PDF
+          files </h2>
+        <section>
+          <h3> 3.3.1 Description</h3>
+
+          <p> The user responsible for the garbage collection can select the time period from the following options:
+            last day, last week or last month. Then he can choose the type of file format by pressing on ether of the
+            buttons.
+            The file will then be downloaded as an HTML, PDF, or CSV file. </p>
+        </section>
+        <section>
+          <h3> 3.3.2 Functional Requirements </h3>
+          <p>The database must be up and running in order for the queries to take effect and the user must be logged in.
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2 id="security"> 3.4 Security</h2>
+        <p>
+          The website can prevent sql injection and cross-site scripting with parameterized SQL queries and with the pg
+          module in NodeJS which sanitizes the input.
+          Also the cookie has the httpOnly mode set to true so unwanted people can not acces it.
+
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h1 id="development"> 4. Development </h1>
+      <section>
+        <h2 id="views"> 4.1 Views </h2>
+        <p>
+          I created the frontend pages which are stored in views. I made them responsive and I validated them using W3C
+          Validator.
+        </p>
+      </section>
+      <section>
+        <h2 id="mvc"> 4.2 MVC </h2>
+        <p>
+          I separated views, controllers and models to make our application implement the MVC architecture.
+          There are controllers and models for the following tables: Cartiere, Cereri, Evenimente, Pebele, Reports,
+          Users and SuperUsers, Zone.
+          Throught certain API the different types of users (unloged, logged User, logged SuperUser and admin) the
+          controllers are used to get, delete, update, or create data from DB ,trough the use of models, sending the
+          appropriate response to the HTML request.
+        </p>
+      </section>
+      <section>
+        <h2 id="NodeJS"> 4.3 NodeJS libraries</h2>
+        <p>
+          The following libraries have been used and installed using npm: cookie-parser for parsing the cookie,
+          parse-multipart-data for procesing form data, puppeteer for generating pdf of hmtl pages, svg-chartist for
+          generating svg with charts.
+        </p>
+      </section>
+      <section>
+        <h2 id="crypto">4.4 NodeJS crypto</h2>
+        <p>
+          The crypto libraries has been used for hashing passwords and for asymetric encrytion of the users credentials
+          given to them in a cookie.
+          With the use of a form the credentials are obtained and encrypted with a public Key. The result is put in a
+          cookie which is then used for autentification.
+        </p>
+      </section>
+
+    </section>
+
+    <section>
+      <h1 id="information_share"> 5. Information Share </h1>
+      <section>
+        <h2 id="github"> 5.1 GitHub </h2>
+        <p>
+          I used GitHub to store the project.
+        </p>
+      </section>
+     
+    </section>
+    <section>
+      <h1 id="architecture_representation"> 6. Architecture Representation </h1>
+      <section>
+        <h2 id="uml_diagram"> 6.1 UML Diagram </h2>
+        <figure typeof="sa:image">
+          <img src="../Resources/Images/Diagram_image.png" alt="UML API image">
+          <figcaption> UML Diagram of the application </figcaption>
+        </figure>
+      </section>
+    </section>
+
+    <section>
+      <h1 id="data_sources"> 7. Data Sources </h1>
+      <section>
+        <h2 id="global_terrorism_database"> 7.1 Garbage Collection&Dispatch Database </h2>
+        <figure typeof="sa:image">
+          <img src="../Resources/Images/diagram-db.png" alt="UML DB image">
+          <figcaption> UML Diagram of the Database </figcaption>
+        </figure>
+      </section>
+    </section>
+
+  </section>
+
+
+</body>
+
+</html>

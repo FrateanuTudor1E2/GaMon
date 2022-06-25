@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin</title>
+    <meta name="description" content="This is the page where the admin can modify the database">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../Resources/CSS/style.css">
+    <link rel="stylesheet" href="../../Resources/CSS/style_form.css">
+    <link rel="stylesheet" href="../../Resources/CSS/style_dropdown.css">
+    <script src="../../Resources/JS/SuperUser.js"></script>
+    <script src="../../Resources/JS/Pubele.js"></script>
+    <script src="../../Resources/JS/ZoneAdmin.js"></script>
+    <script src="../../Resources/JS/Cartiere.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-header">
+            <div class="container-header-content">
+                <a href="./login.html">Logout</a>
+            </div>
+        </div>
+
+        <p>Tabela SuperUseri</p>
+        <form method="POST" name="SUser">
+            <br>
+
+            Username: <input type="text" name="username">
+            Email: <input type="text" name="email">
+            Password:<input type="text" name="password">
+
+            <br><br>
+            <input type="button" name="add" value="Add Data" onclick="addSuperUser(event);" class="btn btn-success">
+            <input type="button" name="get" value="Get Data" onclick="getSuperUser(event);" class="btn btn-success">
+            <hr>
+
+
+            <table class="table">
+                <tbody id="tbl1">
+                    <tr>
+                        <th>ID</th>
+                        <th>Userame</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Delete</th>
+
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </form>
+
+
+
+        <p>Tabela Pubele</p>
+        <form method="POST" name="Pubele">
+            <br>
+            TipGunoi: <select id="selected_type">
+                <option value="Menajer" selected>
+                    Menajer
+                </option>
+                <option value="Hartie/Carton">
+                    Hartie/Carton
+                </option>
+                <option value="Sticla">
+                    Sticla
+                </option>
+                <option value="Plastic/Metal">
+                    Plastic/Metal
+                </option>
+
+
+            </select>
+            Capacitate: <input type="number" name="capacitate">
+            cantitate: <input type="number" name="cantitate">
+            idCartier: <input type="number" name="idcartier">
+
+            <br><br>
+            <input type="button" name="add" value="Add Data" onclick="addPubela();" class="btn btn-success">
+            <input type="button" name="get" value="Get Data" onclick="getPubela();" class="btn btn-success">
+            <hr>
+
+            <table class="table">
+                <tbody id="tbl2">
+                    <tr>
+                        <th>ID</th>
+                        <th>TipGunoi</th>
+                        <th>dataCuratare</th>
+                        <th>capacitate</th>
+                        <th>cantitate</th>
+                        <th>idCartier</th>
+                        <th>Delete</th>
+
+
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+
+        </form>
+
+
+
+        <p>Tabela Zone</p>
+        <form method="POST" name="Zone">
+            <br>
+            Nume: <input type="text" name="nume">
+            <br><br>
+            <input type="button" name="add" value="Add Data" onclick="addZona();" class="btn btn-success">
+            <input type="button" name="get" value="Get Data" onclick="getZona();" class="btn btn-success">
+            <hr>
+
+            <table class="table">
+                <tbody id="tb3">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume</th>
+                        <th> Delete</th>
+
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+
+        </form>
+
+        <p>Tabela Cartiere</p>
+        <form method="POST" name="Cartiere">
+            <br>
+            Nume: <input type="text" name="nume_cartier">
+            adresa: <input type="text" name="adresa">
+            id_Zona: <input type="number" name="zonaID">
+            <br><br>
+            <input type="button" name="add" value="Add Data" onclick="addCartier();" class="btn btn-success">
+            <input type="button" name="get" value="Get Data" onclick="getCartier();" class="btn btn-success">
+            <hr>
+
+            <table class="table">
+                <tbody id="tb4">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume</th>
+                        <th>adresa</th>
+                        <th>id_Zona</th>
+                        <th> Delete</th>
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+
+        </form>
+
+
+
+    </div>
+
+</body>
+
+
+
+</html>

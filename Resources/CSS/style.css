@@ -1,0 +1,160 @@
+body{
+	margin:0;
+	font-size: 16px;
+	background-color: rgb(186, 230, 204);
+}
+.main-header{
+	position: fixed;
+	width: 100%;
+	z-index: 15;
+	background-color: rgb(43, 186, 81);
+	overflow: hidden;
+}
+
+.container-header{
+	max-width: 100%;
+	padding: 1.5em;
+	margin:1rem auto;
+
+	flex-flow: row wrap;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	
+}
+
+.collumn-flex{
+	display: flex;
+	margin:1.5rem 3.5rem;
+	flex-flow: row wrap;
+	text-align: center; 
+	justify-content: center;
+	align-items: center;
+}
+
+.row-flex{
+	display: flex;
+	margin:3.5rem 5.5rem;
+	flex-flow: row wrap;
+	text-align: center;
+	justify-content: space-around;
+	align-items: center;
+	column-gap: 8.5rem;
+
+
+}
+.container-header-content a{
+
+	color:white;
+	font-size: 1.2em;
+	padding:0.5em 3.5em;
+	text-decoration: none;
+
+	border: 0.2rem solid white;
+	border-radius: 3rem;
+	background-image: linear-gradient(180deg, rgb(120, 222, 147,1) , rgb(120, 222, 147,0));
+
+
+}
+.container-header-content a:visited{
+	color:white;
+}
+
+.image-slider{
+	overflow: hidden;
+	position: fixed;
+	
+	z-index: 11;
+}
+.image-slider figure img{
+	opacity: 80%;
+	width: 20%;
+	float: left;
+}
+.image-slider figure{
+	
+	position: relative;
+	width: 500%;
+	margin:0;
+	padding: 0;
+	font-size: 0;
+	text-align: left;
+	animation: 30s slide infinite;
+}
+
+.text-area{
+
+	width: 90%;
+	align-self: center;
+	text-align: center;
+	height: 100%;
+	background-color:  rgb(43, 186, 81);
+	margin:10rem 0;
+}
+.container-text-area{
+	background-color: transparent;
+	z-index: 13;
+	top:20%;
+	width: 100%;
+	position: absolute;
+	display: flex;
+
+	justify-content: center;
+	flex-direction: column;
+}
+
+
+@keyframes slide{
+	0%{
+		left: 0%;
+	}
+	30%{
+		left: 0%;
+	}
+	35%{
+		left: -100%;
+	}
+	60%{
+		left: -100%;	
+	}
+	65%{
+		left: -200%;
+	}
+	100%{
+		left: -200%;
+	}
+
+}
+@media(max-width: 1600px){
+	.row-flex{
+		column-gap: 3rem;
+		margin:1.5rem ;
+	}	
+}
+
+@media (max-width: 880px) {
+	.container-header{
+		flex-flow: column;
+		margin: 0;
+	}
+	.collumn-flex{
+		margin:0;
+		flex-flow: column wrap;
+	}
+	.row-flex{
+		margin: 0.5rem;
+		column-gap: 0.5rem;
+	}
+	.container-header-content{
+		margin: 1rem;
+	}
+	.container-header-content a{
+		padding:0.5em; 
+	}
+	.container-text-area{
+		top:40%;
+	}
+	.image-slider{
+		top:40%;
+	}
+}

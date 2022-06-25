@@ -1,0 +1,45 @@
+.table{
+	margin: 0.4rem 0;		
+	max-width: 100%;	
+	border-collapse: collapse;	
+	overflow-x:auto;
+	display: inline-block;
+	
+}
+.table td, .table th{
+	border: 0.2rem solid white;
+	padding: 0.4rem;
+}
+.form{
+	display: flex;
+	flex-flow: column;
+	align-self: center;
+}
+.form label{
+	margin:0.2rem 0;
+	padding: 0.2em;
+}
+.form textarea{
+	margin:0.2rem 0;
+	padding: 0.2em;
+	width: 50%;
+	align-self: center;
+}
+.form input{
+	margin:0.2rem 0;
+	padding: 0.2em;
+	width: 50%;
+	align-self: center;
+}
+.form button{
+	margin:0.2rem 0;
+	padding: 0.2em;
+	width: 20%;
+	align-self: center;
+}
+.form select{
+	margin:0.2rem 0;
+	padding: 0.2em;
+	width: 50%;
+	align-self: center;
+}
